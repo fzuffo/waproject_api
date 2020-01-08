@@ -12,8 +12,8 @@ export async function up(knex: Knex): Promise<void> {
       .inTable('User')
       .onDelete('CASCADE');
     table.string('description', 100).notNullable();
-    table.integer('amount').notNullable();
-    table.integer('value').notNullable();
+    table.float('amount').notNullable();
+    table.float('value').notNullable();
     table.dateTime('createdDate').notNullable();
     table.dateTime('updatedDate').notNullable();
   });

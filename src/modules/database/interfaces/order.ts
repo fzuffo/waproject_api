@@ -6,8 +6,6 @@ export interface IOrder {
   description: string;
   amount: number;
   value: number;
-  // currentToken: string;
-  // notificationToken?: string;
 
   user?: IUser;
 }

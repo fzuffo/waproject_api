@@ -1,10 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { IPaginationParams } from 'modules/common/interfaces/pagination';
+import { IOrder } from 'modules/database/interfaces/order';
 import { Order } from 'modules/database/models/order';
 import { Page, Transaction } from 'objection';
 
-// import { IOrder } from 'modules/database/interfaces/order';
-// import { IOrder } from 'modules/database/interfaces/order';
 @Injectable()
 export class OrderRepository {
   public async list(params: IPaginationParams, transaction?: Transaction): Promise<Page<Order>> {
@@ -30,5 +29,9 @@ export class OrderRepository {
     }
 
     return query;
+  }
+
+  public async create(model: IOrder, transaction?: Transaction): Promise<Order> {
+    return Order.query(transaction).insertAndFetch(model as any);
   }
 }

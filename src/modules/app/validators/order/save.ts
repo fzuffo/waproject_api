@@ -18,7 +18,7 @@ export class SaveValidator implements IOrder {
 
   @IsNotEmpty()
   @IsNumber()
-  @ApiProperty({ required: true, type: 'integer' })
+  @ApiProperty({ required: true, type: 'float' })
   public amount: number;
 
   @IsNotEmpty()

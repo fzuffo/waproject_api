@@ -18,13 +18,11 @@ export class SaveValidator implements IOrder {
 
   @IsNotEmpty()
   @IsInt()
-  @MaxLength(50)
-  @ApiProperty({ required: true, type: 'integer', maxLength: 50 })
+  @ApiProperty({ required: true, type: 'integer' })
   public amount: number;
 
   @IsNotEmpty()
   @IsInt()
-  @MaxLength(10)
-  @ApiProperty({ required: true, type: 'integer', maxLength: 10 })
+  @ApiProperty({ required: true, type: 'integer' })
   public value: number;
 }

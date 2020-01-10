@@ -22,15 +22,29 @@ export class OrderRepository {
     if (params.term) {
       query = query.where(query => {
         return query.where('description', 'ilike', `%${params.term}%`);
-        // .orWhere('amount', 'ilike', `%${params.term}%`)
-        // .orWhere('value', 'ilike', `%${params.term}%`);
       });
     }
 
     return query;
   }
 
-  public async create(model: IOrder, transaction?: Transaction): Promise<Order> {
-    return Order.query(transaction).insertAndFetch(model as any);
+  public async insert(model: IOrder, transaction?: Transaction): Promise<Order> {
+    return Order.query(transaction).insert(model as any);
+  }
+
+  public async remove(id: number, transaction?: Transaction): Promise<void> {
+    await Order.query(transaction)
+      .del()
+      .where({ id });
+  }
+
+  public async findById(id: number, transaction?: Transaction): Promise<Order> {
+    return Order.query(transaction)
+      .where({ id })
+      .first();
+  }
+
+  public async update(model: IOrder, transaction?: Transaction): Promise<Order> {
+    return Order.query(transaction).updateAndFetchById(model.id, <Order>model);
   }
 }

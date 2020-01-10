@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Query } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AuthRequired, CurrentUser } from 'modules/common/guards/token';
 import { ICurrentUser } from 'modules/common/interfaces/currentUser';
@@ -24,6 +24,16 @@ export class OrderController {
   @Post()
   @ApiResponse({ status: 200, type: Order })
   public async save(@Body() model: SaveValidator, @CurrentUser() currentUser: ICurrentUser) {
-    return this.orderService.create(model, currentUser);
+    return this.orderService.save(model, currentUser);
   }
+
+  @Delete(':orderId')
+  public async delete(@Param('orderId', ParseIntPipe) orderId: number) {
+    return this.orderService.remove(orderId);
+  }
+
+  // @Put(':orderId')
+  // public async update(@Param('orderId', ParseIntPipe) orderId: number) {
+  //   return this.orderService.update(orderId);
+  // }
 }

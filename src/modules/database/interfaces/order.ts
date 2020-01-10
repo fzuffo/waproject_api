@@ -7,5 +7,8 @@ export interface IOrder {
   amount: number;
   value: number;
 
+  createdDate?: Date;
+  updatedDate?: Date;
+
   user?: IUser;
 }

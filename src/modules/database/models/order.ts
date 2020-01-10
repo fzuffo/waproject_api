@@ -11,14 +11,11 @@ export class Order extends Model implements IOrder {
   public userId?: number;
   @ApiProperty({ type: 'string' })
   public description: string;
-  @ApiProperty({ type: 'integer' })
-  public amount: number;
-  @ApiProperty({ type: 'integer' })
-  public value: number;
-  // @ApiProperty({ type: 'string' })
-  // public currentToken: string;
-  // @ApiProperty({ type: 'string' })
-  // public notificationToken?: string;
+  @ApiProperty({ type: 'string' })
+  public amount: string;
+  @ApiProperty({ type: 'string' })
+  public value: string;
+
   @ApiProperty({ type: 'string', format: 'date-time' })
   public createdDate: Date;
   @ApiProperty({ type: 'string', format: 'date-time' })

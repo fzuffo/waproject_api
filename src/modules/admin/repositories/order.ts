@@ -12,7 +12,7 @@ export class OrderRepository {
       .page(params.page, params.pageSize);
 
     if (params.orderBy) {
-      if (params.orderBy !== 'id') {
+      if (params.orderBy !== 'description') {
         query = query.orderBy(params.orderBy, params.orderDirection);
       } else {
         query = query.orderBy('value', params.orderDirection).orderBy('amount', params.orderDirection);
@@ -21,10 +21,9 @@ export class OrderRepository {
 
     if (params.term) {
       query = query.where(query => {
-        return query
-          .where('id', 'ilike', `%${params.term}%`)
-          .orWhere('description', 'ilike', `%${params.term}%`)
-          .orWhere('amount', 'ilike', `%${params.term}%`);
+        return query.where('description', 'ilike', `%${params.term}%`);
+        // .orWhere('amount', 'ilike', `%${params.term}%`)
+        // .orWhere('value', 'ilike', `%${params.term}%`);
       });
     }
 

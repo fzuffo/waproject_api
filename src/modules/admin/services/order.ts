@@ -3,7 +3,7 @@ import { ICurrentUser } from 'modules/common/interfaces/currentUser';
 import { IOrder } from 'modules/database/interfaces/order';
 import { Order } from 'modules/database/models/order';
 
-import { OrderRepository } from '../repositories/order';
+import { OrderRepository } from '../../admin/repositories/order';
 import { UserRepository } from '../repositories/user';
 
 @Injectable()
